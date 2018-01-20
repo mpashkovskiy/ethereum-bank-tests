@@ -46,6 +46,8 @@ Solution: add `payable` modifier to the constructor
 
 ### Problem 2. this.balance != Sum(this.balances) (found by sbuilder-eth)
 
+*Important:* If problem 1. is not solved this problem doesn't exist!
+
 In the same section [3.4. Run 2 for setup3 – Find 1st Bug](https://jarjuk.wordpress.com/2017/12/06/sbuilder-bank/#orgheadline7) stated:
 
 `Error analysis: constructor does not update balances variable, and invariant Bank_promise is violated in Bank() constructor.`
@@ -56,4 +58,16 @@ Validated by migration `migrations/1516449292_deploy__bank_2.js` which sends fun
 
 Solution: add `balances[msg.sender] = msg.value;` to the constructor.
 
-### Problem 3. Possibility to send funds "recursively" (found by sbuilder-eth)
+### Problem 3. Imposibility to fake origin address of transaction (not found by sbuilder-eth)
+
+Section [4.2 Run 3 for setup3 – Find 2nd Bug](https://jarjuk.wordpress.com/2017/12/06/sbuilder-bank/#find-bug-2) states that it is possible to call `saveAccount()` with bank address. It is impossible as to use bank (contract) address we have to unlock bank (contract) account but we have no key and password to do so. Only contract can call `saveAccount()` with it's own address.
+
+Validated by `test/Bank_3_saveAccount_recursive_funding_0.js`
+
+Solution: TODO: add method `recursiveTransfer()` to the contract which will transfer funds.
+
+### Problem 4. Possibility to send funds "recursively" (found by sbuilder-eth)
+
+*Important:* If problem 3. is not solved this problem doesn't exist!
+ 
+TODO:

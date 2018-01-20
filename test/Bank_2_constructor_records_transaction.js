@@ -11,7 +11,7 @@ contract('Bank_2', function(accounts) {
       .deployed()
       .then(function(instance) {
         bank = instance;
-        return bank.getBalance(account_one);
+        return bank.getBalance.call(account_one);
       })
       .then(function(balance) {
         assert.equal(balance.toNumber(), initialAmount);
