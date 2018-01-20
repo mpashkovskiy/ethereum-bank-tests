@@ -4,9 +4,7 @@ contract Bank_1 {
 
   mapping(address => uint256 ) balances;
   
-  function Bank_1() public {
-    balances[msg.sender] = msg.value;
-  }
+  function Bank_1() public {}
 
   function saveAccount() public payable {
     balances[msg.sender] = balances[msg.sender] + msg.value;
