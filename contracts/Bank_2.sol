@@ -2,7 +2,7 @@ pragma solidity ^0.4.17;
 
 contract Bank_2 {
 
-  mapping(address => uint256 ) balances;
+  mapping(address => uint256) balances;
   
   function Bank_2() public payable {
   }

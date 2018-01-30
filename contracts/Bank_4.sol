@@ -2,10 +2,12 @@ pragma solidity ^0.4.17;
 
 contract Bank_4 {
 
-  mapping(address => uint256 ) balances;
+  address bank;
+  mapping(address => uint256) balances;
   
   function Bank_4() public payable {
     balances[msg.sender] = msg.value;
+    bank = this;
   }
 
   function saveAccount() public payable {
@@ -13,7 +15,7 @@ contract Bank_4 {
   }
 
   function recursiveTransfer(uint amount) public {
-    // TODO: call saveAccount() and transfer amount of either
+    Bank_4(bank).saveAccount.value(amount)();
   }
 
   function getBalance(address aAddress) public constant returns(uint256) {
