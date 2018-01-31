@@ -15,7 +15,7 @@ contract Bank_4 {
   }
 
   function recursiveTransfer(uint amount) public {
-    Bank_4(bank).saveAccount.value(amount)();
+    this.saveAccount.value(amount)();
   }
 
   function getBalance(address aAddress) public constant returns(uint256) {
