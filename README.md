@@ -64,9 +64,10 @@ Section [4.2 Run 3 for setup3 – Find 2nd Bug](https://jarjuk.wordpress.com/201
 
 Validated by `test/Bank_3_saveAccount_recursive_funding_0.js`
 
-Solution: add method `recursiveTransfer(uint amount)` to the contract which will transfer funds. Important notice: Remix IDE gives an warning about the method:
+Solution: add method `recursiveTransfer(uint amount)` to the contract which will transfer funds. Important notice: Remix IDE gives two warnings about the method:
 
-`Gas requirement of function Bank_4.recursiveTransfer() high: infinite. If the gas requirement of a function is higher than the block gas limit, it cannot be executed. Please avoid loops in your functions or actions that modify large areas of storage (this includes clearing or copying arrays in storage)`
+* `Gas requirement of function Bank_4.recursiveTransfer() high: infinite. If the gas requirement of a function is higher than the block gas limit, it cannot be executed. Please avoid loops in your functions or actions that modify large areas of storage (this includes clearing or copying arrays in storage)`
+* `browser/Bank_4.sol:18:5:Use of "this" for local functions: Never use this to call functions in the same contract, it only consumes more gas than normal local calls.`
 
 ### Problem 4. Possibility to send funds "recursively" (found by sbuilder-eth)
 
